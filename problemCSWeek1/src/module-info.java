@@ -1,0 +1,2 @@
+module problemCSWeek1 {
+}
