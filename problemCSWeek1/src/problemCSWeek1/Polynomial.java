@@ -54,20 +54,45 @@ public class Polynomial {
 		
 		//this loop will continue until
 		//		a. there is no + left
-		//		b. there is no - left (unless its a negative exponent)
-		while( (text.indexOf("+")>-1) || ( text.indexOf("-")>-1 && !(text.substring(text.indexOf("-"),text.indexOf("-")+1).equals("^")) ) ) {
-			for(int i=0;i<text.length();i++) { 
+		//		b. there is no - left (unless the - is not ahead of a ^ such as 3x^-2)
+		while( (text.indexOf("+")>-1) || (     text.indexOf("-")>-1     &&     !(text.substring(text.indexOf("-")-1,text.indexOf("-")).equals("^"))    )) {
+			if(text.indexOf("+")>-1) {
+				System.out.println("There is a + left in the text");
+			}
+			if(text.indexOf("-")>-1) {
+				System.out.println("There is a - left in the text");
+			}
+			System.out.println("This is the text we're dealing with: "+text);
+			for(int i=1;i<text.length();i++) { 
+				System.out.println("In the Loop at number "+i);
 				//if im on a plus, then chop it up
-				if(p.substring(i,i+1).equals("+")){
+				if(text.substring(i,i+1).equals("+")){
+					System.out.println("Found a + at "+i);
 					//add it to our terms list
-					termsList.add(text.substring(1,i));
+					termsList.add(text.substring(0,i));
 					System.out.println("Added a term! It's "+text.substring(0,i));
 					//chop it off so we don't re-add it later
-					text = text.substring(i);
-					
+					text = text.substring(i+1);
+					System.out.print("Look for another plus or minus with: "+text);
 					
 				}
-				if(p.substring(i,i+1).equals("-")) {
+				
+				//if im on a negative
+				else if(text.substring(i,i+1).equals("-")){
+					//check if its the first negative (-3x^2 v.s. 3x^-2, chop one but leave the other)
+					if(text.substring(i-1,i).equals("^")) {
+						//if it's a carrot then we're dealing with a negative exponent
+					}
+					else {
+						//if it's not, then we need a new term
+						
+						//add it to our terms list
+						termsList.add(text.substring(0,i));
+						System.out.println("Added a term! It's "+text.substring(0,i));
+						//chop it off so we don't re-add it later
+						text = text.substring(i+1);
+					}
+					
 					
 				}
 			}
@@ -190,6 +215,14 @@ public class Polynomial {
 			}
 			
 		}
+		
+		//======= ONE FINAL CHECK ==========
+		String total = "";
+		for(Term t : terms) {
+			total = total + t.toString();
+			System.out.println("The first term is "+t.toString()+". It's constant is "+t.getConstant()+". It's exponent is "+t.getExponent());
+		}
+		System.out.println(total.substring(1));
 		
 	}
 

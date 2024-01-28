@@ -48,13 +48,26 @@ public class Term {
 				int endOfConstant = positionOfCarrot-1;
 				
 				//everything after the carrot is our exponent
-				System.out.println((s.substring(positionOfCarrot+1)));
-				newExponent = Integer.valueOf(s.substring(positionOfCarrot+1));
+				if(newExponentSign==-1) {
+					System.out.println((s.substring(positionOfCarrot+2)));
+					newExponent = Integer.valueOf(s.substring(positionOfCarrot+2));
+
+				}
+				else {
+					System.out.println((s.substring(positionOfCarrot+1)));
+					newExponent = Integer.valueOf(s.substring(positionOfCarrot+1));
+				}
 				
 				//everything before the x is the constant
 				newConstant = Integer.valueOf(s.substring(0,endOfConstant));
 				
 				System.out.println(newConstant+" is the constant. "+newExponent+" is the exponent.");
+			}
+			else {
+				int endOfConstant = s.indexOf("x");
+				//if there is no exponent, but there is a x, then its something like 4x
+				newConstant = Integer.valueOf(s.substring(0,endOfConstant));
+				newExponent = 1;
 			}
 		}
 		else if(s.indexOf("x")==0) {

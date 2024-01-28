@@ -16,6 +16,8 @@ public class Main {
 			try {
 				//get it using scanner
 				String polynomialString = s.nextLine();
+				//String polynomialString = "2x^-2-4x+1";
+
 
 				//pass the string through
 				Polynomial p = new Polynomial(polynomialString);
