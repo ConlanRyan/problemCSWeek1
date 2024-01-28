@@ -15,8 +15,8 @@ public class Main {
 		while(badInput) {
 			try {
 				//get it using scanner
-				String polynomialString = s.nextLine();
-				//String polynomialString = "2x^-2-4x+1";
+				//String polynomialString = s.nextLine();
+				String polynomialString = "4x^2+x+1";
 
 
 				//pass the string through
@@ -26,11 +26,22 @@ public class Main {
 				badInput = false;
 				
 			}
-			catch (IllegalArgumentException e) {
+			catch (IllegalPolynomialException e) {
 				//UH OH! The person entered some wild stuff, let's restart
-				System.out.println("Something was wrong with the polynomial you gave.");
+				System.out.println("You entered ");
+				
+				if(e.getListOfWhyItsWrong().size()>1) {
+					for(int i=0;i<e.getListOfWhyItsWrong().size()-1;i++) {
+						System.out.print("'"+e.getListOfWhyItsWrong().get(i)+"', ");
+					}
+					System.out.print("'"+e.getListOfWhyItsWrong().get(e.getListOfWhyItsWrong().size()-1)+"'. ");
+				}
+				else {
+					System.out.print("'"+e.getListOfWhyItsWrong().get(e.getListOfWhyItsWrong().size()-1)+"'. ");
+				}
+				System.out.print("This is wrong, ");
 				//ask for the polynomial
-				System.out.println("Please reenter your polynomial (Example: 3x^3 + 2x^2 + 3x + 1): ");
+				System.out.println("please reenter your polynomial (Example: 3x^3 + 2x^2 + 3x + 1): ");
 				//keep the loop going
 				badInput = true;
 			}

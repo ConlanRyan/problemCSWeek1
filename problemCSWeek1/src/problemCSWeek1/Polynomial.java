@@ -23,23 +23,24 @@ public class Polynomial {
 		setTerms(poly.getTerms());
 	}
 	//string
-	public Polynomial(String p) throws IllegalArgumentException{
+	public Polynomial(String p) throws IllegalPolynomialException{
 		
 		//======= ENSURING WE HAVE A LEGAL POLYNOMIAL =========
+		//takes the string and remove all the whitespace
+		p=p.replace(" ","");
 		try {
 			//alright lets find out
 			testMyPolynomial(p);
 		}
-		catch (IllegalArgumentException i) {
+		catch (IllegalPolynomialException i) {
 			//nope! it was illegal, tell the Main function!
-			throw new IllegalArgumentException();
+			throw new IllegalPolynomialException(i.getListOfWhyItsWrong());
 		}
 		
 		
 		//========= MAKING THE LIST OF TERMS =============
 		
-		//takes the string and remove all the whitespace
-		p.replace(" ","");
+		
 		//make a list of our terms together, 3x^2-4x+1 will look like [3x^2,4x,1]
 		//String[] termsList = p.split("[\\+-]");
 		
@@ -54,8 +55,9 @@ public class Polynomial {
 		
 		//this loop will continue until
 		//		a. there is no + left
-		//		b. there is no - left (unless the - is not ahead of a ^ such as 3x^-2)
-		while( (text.indexOf("+")>-1) || (     text.indexOf("-")>-1     &&     !(text.substring(text.indexOf("-")-1,text.indexOf("-")).equals("^"))    )) {
+		//		b. there is no - left 
+		while( text.indexOf("+")>-1 || text.indexOf("-")>-1 ) {
+			
 			if(text.indexOf("+")>-1) {
 				System.out.println("There is a + left in the text");
 			}
@@ -240,19 +242,24 @@ public class Polynomial {
 	
 	//--------OTHERS-----------
 	
-	private void testMyPolynomial(String p) throws IllegalArgumentException{
+	private void testMyPolynomial(String p) throws IllegalPolynomialException{
 		//none of these are allowed in a polynomial
-		String[] list = {"a","b","c","d","e","f","g","h","i","j","k",
+		String[] penaltyList = {"a","b","c","d","e","f","g","h","i","j","k",
 						"l","m","n","o","p","q","r","s","t","u","v",
 						"w","y","z",",",".","/",";","'","[","]", "/",
-						"<",">",":","{","}","!","@","#","$","a","%",
+						"<",">",":","{","}","!","@","#","$","%",
 						"&","*","(",")","_","="};
-		for(int i=0;i<list.length;i++) {
+		ArrayList<String> whatIsWrong = new ArrayList<String>();
+		for(int i=0;i<penaltyList.length;i++) {
 			//if the polynomial received has ANY of these characters
-			if(p.indexOf(list[i])>-1) {
+			if(p.indexOf(penaltyList[i])>-1) {
 				//throw an illegal argument exception
-				throw new IllegalArgumentException();
+				whatIsWrong.add(penaltyList[i]);
 			}
+		}
+		
+		if(whatIsWrong.size()>0) {
+			throw new IllegalPolynomialException(whatIsWrong);
 		}
 		
 	}

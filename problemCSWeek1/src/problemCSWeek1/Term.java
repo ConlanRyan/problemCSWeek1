@@ -34,7 +34,7 @@ public class Term {
 		int newExponent = 0;
 		//System.out.println(s);
 		
-		if(s.indexOf("x")>-1) {
+		if(s.indexOf("x")>0) {
 			//there is an x in there somewhere
 			
 			//check if there is a ^
@@ -146,7 +146,15 @@ public class Term {
 		}
 		//if it's a constant and variable, like 5x, then write that
 		else if (exponent==1) {
-			written = written+constant+"x";
+			//if its just x, we're not going to write 1x
+			if(constant == 1) {
+				written = written+"x";
+			}
+			else {
+				// if its 4x then we're going to write 4x
+				written = written+constant+"x";
+			}
+			
 		}
 		//if it's at a higher power, like 4x^5, then write that
 		else {
