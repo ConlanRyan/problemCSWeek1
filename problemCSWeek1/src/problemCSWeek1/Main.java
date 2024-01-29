@@ -20,75 +20,10 @@ public class Main {
 		while(badInput) {
 			try {
 				//get it using scanner
-				//String polynomialString = s.nextLine();
-				testPolynomials.add("3x^2 - 5x + 2");
-		        testPolynomials.add("4x^3 + 7x^2 - 2x + 1");
-		        testPolynomials.add("x^4 - 6x^3 + 11x^2 - 6x + 1");
-		        testPolynomials.add("2x^2 + 8x - 3");
-		        testPolynomials.add("5x^3 - 2x^2 + 3x - 7");
-		        testPolynomials.add("x^5 - 3x^4 + 5x^3 - 2x^2 + 1");
-		        testPolynomials.add("3x^2 - x + 4");
-		        testPolynomials.add("6x^4 + 2x^3 - 8x^2 + x - 5");
-		        testPolynomials.add("4x^3 + 6x^2 - x - 2");
-		        testPolynomials.add("x^2 - 4x + 7");
-		        testPolynomials.add("2x^4 - x^3 + 3x^2 - 7x + 1");
-		        testPolynomials.add("5x^3 - 2x^2 + 8x - 1");
-		        testPolynomials.add("x^3 - 2x^2 + 4x - 8");
-		        testPolynomials.add("3x^2 + 5x - 2");
-		        testPolynomials.add("4x^4 - 7x^3 + 2x^2 + 1");
-		        testPolynomials.add("x^5 - x^4 + 2x^3 - 5x^2 + 3x - 1");
-		        testPolynomials.add("2x^2 - 3x + 1");
-		        testPolynomials.add("6x^3 + 4x^2 - 9x + 2");
-		        testPolynomials.add("x^4 - 5x^3 + 7x^2 - 4x + 2");
-		        testPolynomials.add("4x^2 + x - 3");
-		        testPolynomials.add("3x^3 - x^2 + 5x - 2");
-		        testPolynomials.add("2x^4 - 3x^3 + 4x^2 - x + 7");
-		        testPolynomials.add("7x^2 - 2x + 4");
-		        testPolynomials.add("x^5 + 2x^4 - 4x^3 + 3x^2 - x + 6");
-		        testPolynomials.add("5x^3 - 4x^2 + 2x - 1");
-		        testPolynomials.add("2x^2 - 6x + 1");
-		        testPolynomials.add("x^4 - x^3 + 3x^2 + 4x - 2");
-		        testPolynomials.add("4x^3 + x^2 - 2x + 8");
-		        testPolynomials.add("3x^2 - 7x + 2");
-		        testPolynomials.add("x^5 - 2x^4 + 5x^3 - 4x^2 + 1");
-		        testPolynomials.add("6x^4 - 3x^3 + 2x^2 - x + 4");
-		        testPolynomials.add("2x^3 + 3x^2 - 4x + 1");
-		        testPolynomials.add("x^4 + 2x^3 - 3x^2 + x - 6");
-		        testPolynomials.add("5x^3 - x^2 + 4x - 2");
-		        testPolynomials.add("3x^2 + 2x - 1");
-		        testPolynomials.add("4x^4 - x^3 + 3x^2 - 7x + 2");
-		        testPolynomials.add("x^5 - 3x^4 + 2x^3 - 4x^2 + 1");
-		        testPolynomials.add("2x^2 - 5x + 3");
-		        testPolynomials.add("7x^3 + 2x^2 - 4x + 1");
-		        testPolynomials.add("x^4 - 4x^3 + 2x^2 - 1");
-		        testPolynomials.add("4x^2 + 3x - 2");
-		        testPolynomials.add("6x^3 - x^2 + 4x - 3");
-		        testPolynomials.add("x^5 - x^4 + 3x^3 - 2x^2 + 5x - 1");
-		        testPolynomials.add("3x^2 - 6x + 2");
-		        testPolynomials.add("5x^4 + 2x^3 - x^2 + 4x - 1");
-		        testPolynomials.add("2x^3 + x^2 - 3x + 4");
-		        testPolynomials.add("x^4 - 3x^3 + 5x^2 - 2x + 1");
-		        testPolynomials.add("4x^2 - 2x + 7");
-		        testPolynomials.add("7x^3 - 4x^2 + 2x - 1");
-		        testPolynomials.add("x^5 - 2x^4 + x^3 + 3x^2 - 4x + 1");
-		        testPolynomials.add("2x^4 - 3x^3 + 4x^2 - x + 6");
-		        testPolynomials.add("3x^2 + x - 5");
-		        testPolynomials.add("6x^3 + 2x^2 - 4x + 1");
-		        testPolynomials.add("x^4 - x^3 + 2x^2 - 5x + 3");
-		        testPolynomials.add("4x^2 - 7x + 2");
-		        testPolynomials.add("5x^3 + 3x^2 - 2x + 1");
-		        testPolynomials.add("x^5 - 3x^4 + 4x^3 - 2x^2 + 1");
-		        testPolynomials.add("2x^2 + 4x - 1");
-		        testPolynomials.add("3x^3 - x^2 + 5x - 2");
-		        testPolynomials.add("x^4 - 2x^3 + 4x^2 - 3x + 1");
-		        testPolynomials.add("4x^2 + 6x - 1");
-
-				for(int i =0;i<testPolynomials.size();i++) {
-					Polynomial p = new Polynomial(testPolynomials.get(i));
-				}
-				//pass the string through
+				String polynomialString = s.nextLine();
 				
-				
+				Polynomial p = new Polynomial(polynomialString);
+				System.out.println(p.toString());
 				//it passed? set badInput to false to get out of the while loop
 				badInput = false;
 				

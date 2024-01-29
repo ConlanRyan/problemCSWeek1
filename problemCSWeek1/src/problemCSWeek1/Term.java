@@ -32,7 +32,6 @@ public class Term {
 		//variables that will be edited later and sent into our setters
 		int newConstant = 0;
 		int newExponent = 0;
-		//System.out.println(s);
 		
 		if(s.indexOf("x")>0) {
 			//there is an x in there somewhere
@@ -49,19 +48,16 @@ public class Term {
 				
 				//everything after the carrot is our exponent
 				if(newExponentSign==-1) {
-					System.out.println((s.substring(positionOfCarrot+2)));
 					newExponent = Integer.valueOf(s.substring(positionOfCarrot+2));
 
 				}
 				else {
-					System.out.println((s.substring(positionOfCarrot+1)));
 					newExponent = Integer.valueOf(s.substring(positionOfCarrot+1));
 				}
 				
 				//everything before the x is the constant
 				newConstant = Integer.valueOf(s.substring(0,endOfConstant));
 				
-				System.out.println(newConstant+" is the constant. "+newExponent+" is the exponent.");
 			}
 			else {
 				int endOfConstant = s.indexOf("x");

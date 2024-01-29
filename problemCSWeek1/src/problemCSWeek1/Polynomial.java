@@ -59,25 +59,14 @@ public class Polynomial {
 		//		b. there is no - left 
 		while( text.indexOf("+")>-1 || text.indexOf("-")>-1 ) {
 			
-			if(text.indexOf("+")>-1) {
-				System.out.println("There is a + left in the text");
-			}
-			if(text.indexOf("-")>-1) {
-				System.out.println("There is a - left in the text");
-			}
-			System.out.println("This is the text we're dealing with: "+text);
+	
 			for(int i=1;i<text.length();i++) { 
-				System.out.println("In the Loop at number "+i);
 				//if im on a plus, then chop it up
 				if(text.substring(i,i+1).equals("+")){
-					System.out.println("Found a + at "+i);
 					//add it to our terms list
 					termsList.add(text.substring(0,i));
-					System.out.println("Added a term! It's "+text.substring(0,i));
 					//chop it off so we don't re-add it later
-					text = text.substring(i+1);
-					System.out.print("Look for another plus or minus with: "+text);
-					
+					text = text.substring(i+1);					
 					//when you're done, you might still have a minus left in there, revert it back to 1
 					i=1;
 				}
@@ -93,7 +82,6 @@ public class Polynomial {
 						
 						//add it to our terms list
 						termsList.add(text.substring(0,i));
-						System.out.println("Added a term! It's "+text.substring(0,i));
 						//chop it off so we don't re-add it later
 						text = text.substring(i+1);
 						
@@ -164,24 +152,19 @@ public class Polynomial {
 		
 		//just to make sure, check that it's not just 2, or 2x, but that it even HAS exponents
 		if(p.indexOf("^")>-1) {
-			System.out.println("there are exponents!");
 			//loop through each character of the polynomial
 			for(int i=0;i<p.length();i++) {
-				System.out.println("inside the loop "+i+" times and analizing "+p.substring(i,i+1));
 				String currentLetter = p.substring(i,i+1);
 				//search for exponents
 				if(currentLetter.equals("^")) {
-					System.out.println("found a ^");
 					//gotcha! an exponent!
 					//now let's find if it's a negative or a positive exponent by looking at the thing before the ^
 					if(p.substring(i+1,i+2).equals("-")) {
-						System.out.println("found a negative exponent");
 						//we've got a negative exponent! let's add it to our list
 						exponentSignsList.add(-1);
 					}
 					else {
 						//if it's 3x^3, then the number ahead of ^is just a constant, we dont write 3x^+3, so just add + to the list
-//						System.out.println("found a positive exponent");
 						exponentSignsList.add(1);
 					}
 				}
@@ -199,11 +182,7 @@ public class Polynomial {
 		}
 		
 		//========= PUTTING IT ALL TOGETHER ============
-		System.out.println("HERE ARE ALL OF THE TERMS!:  \n");
-		for(String t : termsList) {
-			System.out.println(t.toString());
-		}
-		System.out.println(termsList.size()+" is the number of terms, "+constantSignsList.size()+" is the number of constant signs, "+exponentSignsList.size()+" is the amount of exponent signs we have");
+
 		int exponentSignCounter = 0;
 		for(int i=0;i<termsList.size();i++) {
 			
@@ -228,9 +207,7 @@ public class Polynomial {
 		String total = "";
 		for(Term t : terms) {
 			total = total + t.toString();
-			System.out.println("The first term is "+t.toString()+". It's constant is "+t.getConstant()+". It's exponent is "+t.getExponent());
 		}
-		System.out.println(total.substring(1));
 		
 	}
 
