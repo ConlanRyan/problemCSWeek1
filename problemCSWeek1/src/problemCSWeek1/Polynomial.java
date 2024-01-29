@@ -25,6 +25,7 @@ public class Polynomial {
 	//string
 	public Polynomial(String p) throws IllegalPolynomialException{
 		
+		
 		//======= ENSURING WE HAVE A LEGAL POLYNOMIAL =========
 		//takes the string and remove all the whitespace
 		p=p.replace(" ","");
@@ -77,6 +78,8 @@ public class Polynomial {
 					text = text.substring(i+1);
 					System.out.print("Look for another plus or minus with: "+text);
 					
+					//when you're done, you might still have a minus left in there, revert it back to 1
+					i=1;
 				}
 				
 				//if im on a negative
@@ -93,6 +96,9 @@ public class Polynomial {
 						System.out.println("Added a term! It's "+text.substring(0,i));
 						//chop it off so we don't re-add it later
 						text = text.substring(i+1);
+						
+						//when you're done, you might still have a plus left in there, revert it back to 1
+						i=1;
 					}
 					
 					
